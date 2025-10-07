@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/home_page.dart';
+import 'package:flutterui/example/aaspas_ui_widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: HomePage(),
+      home: AaspasUIWidgets(),
+      // home: AaspasUIWidgets(),
+      // home: AaspasUIWidgets(),
+      // home: AaspasUIWidgets(),
     );
   }
 }

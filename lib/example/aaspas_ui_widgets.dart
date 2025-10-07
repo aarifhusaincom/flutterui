@@ -1,11 +1,12 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutterui/flutterui/aaspas/details_widgets/shop_details.dart';
 
-import 'flutterui/flutterui.dart';
+import '../flutterui/flutterui.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class AaspasUIWidgets extends StatelessWidget {
+  const AaspasUIWidgets({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +52,21 @@ class HomePage extends StatelessWidget {
             onPress: () {
               log("Property Card pressed");
             },
+          ),
+          ShopDetails(
+            openTime: "10:00 AM",
+            closeTime: "10:00 PM",
+            weekDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            shopName: "Hidayah Mobile and accessories",
+            verified: true,
+            area: "Khajrana",
+            address:
+                "Shop no. 1 usman patel complex haroon colony near choice bakery pakiza road Khajrana Indore 452016 Madhya Pradesh",
+            shopType: ["Retails", "Wholesale", "Service"],
+            distance: "13 KM",
+            description:
+                "गरीब नवाज केटरर्स | गोश्त कोरमा, बटर चिकन, माँडे, ब्रियानी, सीक कबाब, चिकन फ्राय | शादी व पार्टी मे सभी प्रकार का खाना बनाने का ऑर्डर लिया जाता है |",
+            phone: "8890879707",
           ),
         ],
       ),
