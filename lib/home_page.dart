@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(title: Text("Flutter UI"), centerTitle: true),
       body: ListView(
         children: [
-          AaspasUiCard.shopListCard(
+          ShopListCard(
             anyJob: true,
             verified: true,
             title: "Capital O 77828 Hotel Twinkle Regency",
@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
               log("Shop Card pressed");
             },
           ),
-          AaspasUiCard.serviceListCard(
+          ServiceListCard(
             verified: true,
             title: "Sadik Pathan",
             dp: "https://images.unsplash.com/photo-1759431318039-0666f33d504b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -38,7 +38,9 @@ class HomePage extends StatelessWidget {
               log("Service Card pressed");
             },
           ),
-          AaspasUiCard.propertyListCard(
+          PropertyListCard(
+            noAnyBroker: true,
+            verified: true,
             title: "₹ 8 Lakh /-",
             dp: "https://images.unsplash.com/photo-1759431318039-0666f33d504b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             totalArea: 12000,
