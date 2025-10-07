@@ -21,7 +21,6 @@ class ShopDetails extends StatelessWidget {
 
   /// delete there variable
   final bool isOpen = true;
-  final bool isOpenDay = true;
 
   const ShopDetails({
     super.key,
@@ -109,13 +108,41 @@ class ShopDetails extends StatelessWidget {
             runSpacing: 4,
             spacing: 4,
             children: [
-              _weekDayContainer(context, daySymbol: 'M', isThisDayOpen: true),
-              _weekDayContainer(context, daySymbol: 'T', isThisDayOpen: true),
-              _weekDayContainer(context, daySymbol: 'W', isThisDayOpen: true),
-              _weekDayContainer(context, daySymbol: 'T', isThisDayOpen: true),
-              _weekDayContainer(context, daySymbol: 'F', isThisDayOpen: false),
-              _weekDayContainer(context, daySymbol: 'S', isThisDayOpen: true),
-              _weekDayContainer(context, daySymbol: 'S', isThisDayOpen: false),
+              _weekDayContainer(
+                context,
+                daySymbol: 'M',
+                isThisDayOpen: weekDays?.contains("Monday"),
+              ),
+              _weekDayContainer(
+                context,
+                daySymbol: 'T',
+                isThisDayOpen: weekDays?.contains("Tuesday"),
+              ),
+              _weekDayContainer(
+                context,
+                daySymbol: 'W',
+                isThisDayOpen: weekDays?.contains("Wednesday"),
+              ),
+              _weekDayContainer(
+                context,
+                daySymbol: 'T',
+                isThisDayOpen: weekDays?.contains("Thursday"),
+              ),
+              _weekDayContainer(
+                context,
+                daySymbol: 'F',
+                isThisDayOpen: weekDays?.contains("Friday"),
+              ),
+              _weekDayContainer(
+                context,
+                daySymbol: 'S',
+                isThisDayOpen: weekDays?.contains("Saturday"),
+              ),
+              _weekDayContainer(
+                context,
+                daySymbol: 'S',
+                isThisDayOpen: weekDays?.contains("Sunday"),
+              ),
             ],
           ),
         ),
@@ -176,14 +203,18 @@ class ShopDetails extends StatelessWidget {
   }
 
   Widget _shopAddress(BuildContext context) {
-    return Text(
-      address ?? "No Address",
-      maxLines: 5,
-      overflow: TextOverflow.ellipsis,
-      style: GoogleFonts.roboto(
-        textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: Color(0xFF4B4454),
-          fontWeight: FontWeight.w500,
+    return SizedBox(
+      width: double.infinity,
+      child: Text(
+        address ?? "No Address",
+        textAlign: TextAlign.start,
+        maxLines: 5,
+        overflow: TextOverflow.ellipsis,
+        style: GoogleFonts.roboto(
+          textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: Color(0xFF4B4454),
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
     );
@@ -194,20 +225,28 @@ class ShopDetails extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(
-          "Khajrana, Indore",
-          style: GoogleFonts.roboto(
-            textStyle: Theme.of(
-              context,
-            ).textTheme.labelLarge?.copyWith(color: Color(0xFF732FCB)),
+        Flexible(
+          child: Text(
+            "Khajrana, Indore",
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: GoogleFonts.roboto(
+              textStyle: Theme.of(
+                context,
+              ).textTheme.labelLarge?.copyWith(color: Color(0xFF732FCB)),
+            ),
           ),
         ),
-        Text(
-          "Retail, Service",
-          style: GoogleFonts.roboto(
-            textStyle: Theme.of(
-              context,
-            ).textTheme.labelLarge?.copyWith(color: Color(0xFF732FCB)),
+        Flexible(
+          child: Text(
+            "Retail, Service",
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: GoogleFonts.roboto(
+              textStyle: Theme.of(
+                context,
+              ).textTheme.labelLarge?.copyWith(color: Color(0xFF732FCB)),
+            ),
           ),
         ),
       ],
@@ -215,14 +254,17 @@ class ShopDetails extends StatelessWidget {
   }
 
   Widget _shopDescription(BuildContext context) {
-    return Text(
-      description ?? "No Description",
-      maxLines: 5,
-      overflow: TextOverflow.ellipsis,
-      style: GoogleFonts.roboto(
-        textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-          color: Color(0xFF777777),
-          fontWeight: FontWeight.w500,
+    return SizedBox(
+      width: double.infinity,
+      child: Text(
+        description ?? "No Description",
+        maxLines: 5,
+        overflow: TextOverflow.ellipsis,
+        style: GoogleFonts.roboto(
+          textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
+            color: Color(0xFF777777),
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
     );
