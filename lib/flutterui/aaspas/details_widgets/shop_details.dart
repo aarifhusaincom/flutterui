@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../aaspas_color_box.dart';
+
 class ShopDetails extends StatelessWidget {
   final String? openTime;
   final String? closeTime;
@@ -212,7 +214,7 @@ class ShopDetails extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         style: GoogleFonts.roboto(
           textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: Color(0xFF4B4454),
+            color: AaspasColorBox.onSurface,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -262,7 +264,7 @@ class ShopDetails extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         style: GoogleFonts.roboto(
           textStyle: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: Color(0xFF777777),
+            color: AaspasColorBox.onSurface,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -270,146 +272,175 @@ class ShopDetails extends StatelessWidget {
     );
   }
 
-  Widget _callAndWhatsapp(BuildContext context, {String? phone}) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        InkWell(
-          onTap: () {
-            log("Call button tapped");
-          },
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 30, vertical: 6),
+  Widget _directionCopyShare(BuildContext context, {String? distance}) {
+    return SizedBox(
+      width: double.infinity,
+      child: Wrap(
+        alignment: WrapAlignment.spaceBetween,
+        crossAxisAlignment: WrapCrossAlignment.center,
+        spacing: 20,
+        runSpacing: 20,
+        children: [
+          Container(
+            width: 172,
+            height: 40,
+            padding: EdgeInsets.symmetric(vertical: 6),
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: Color(0xFFDFC6FF),
-              borderRadius: BorderRadius.circular(6),
+              color: AaspasColorBox.buttonBg,
+              borderRadius: BorderRadius.circular(60),
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
-              spacing: 10,
+              mainAxisSize: MainAxisSize.min,
+
+              spacing: 6,
               children: [
-                SvgPicture.asset(
-                  "assets/icons/aaspas_phone-flip.svg",
-                  width: 15,
-                  height: 15,
-                ),
+                SvgPicture.asset("assets/icons/aaspas_location.svg"),
                 Text(
-                  "Call",
+                  "Direction $distance",
                   style: GoogleFonts.roboto(
-                    textStyle: Theme.of(context).textTheme.titleSmall,
+                    textStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
+                      color: AaspasColorBox.onSurface,
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-        ),
-        InkWell(
-          onTap: () {
-            log("WhatsApp button tapped");
-          },
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Color(0xFF0B8F00),
-              borderRadius: BorderRadius.circular(6),
-            ),
+
+          SizedBox(
+            width: 180,
+
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.center,
-              spacing: 10,
+              spacing: 20,
               children: [
-                SvgPicture.asset(
-                  "assets/icons/aaspas_logo-whatsapp-in-property-list-card.svg",
-                  width: 18,
-                  height: 18,
+                IconButton.filled(
+                  onPressed: () {},
+
+                  icon: Icon(Icons.copy_rounded, color: Color(0xFF5A00B2)),
+                  // splashColor: Color(0xFFFAF0FE),
+                  style: ButtonStyle(
+                    backgroundColor: WidgetStateProperty.all(
+                      AaspasColorBox.buttonBg,
+                    ),
+                  ),
                 ),
-                Text(
-                  "WhatsApp",
-                  style: GoogleFonts.roboto(
-                    textStyle: Theme.of(
-                      context,
-                    ).textTheme.titleSmall?.copyWith(color: Colors.white),
+                Container(
+                  width: 100,
+                  height: 40,
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                  decoration: BoxDecoration(
+                    color: AaspasColorBox.buttonBg,
+                    borderRadius: BorderRadius.circular(60),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    spacing: 6,
+                    children: [
+                      SvgPicture.asset("assets/icons/aaspas_share.svg"),
+                      Text(
+                        "Share",
+                        style: GoogleFonts.roboto(
+                          textStyle: Theme.of(context).textTheme.labelLarge
+                              ?.copyWith(color: AaspasColorBox.onSurface),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
-  Widget _directionCopyShare(BuildContext context, {String? distance}) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-          decoration: BoxDecoration(
-            color: Color(0xFFF4EBF8),
-            borderRadius: BorderRadius.circular(6),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            spacing: 6,
-            children: [
-              SvgPicture.asset("assets/icons/aaspas_location.svg"),
-              Text(
-                "Direction $distance",
-                style: GoogleFonts.roboto(
-                  textStyle: Theme.of(
-                    context,
-                  ).textTheme.labelLarge?.copyWith(color: Color(0xFF1E1A23)),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 20,
-          children: [
-            IconButton.filled(
-              onPressed: () {},
-              icon: Icon(Icons.copy_rounded, color: Color(0xFF732FCB)),
-              // splashColor: Color(0xFFFAF0FE),
-              style: ButtonStyle(
-                backgroundColor: WidgetStateProperty.all(Color(0xFFFAF0FE)),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+  Widget _callAndWhatsapp(BuildContext context, {String? phone}) {
+    return SizedBox(
+      width: double.infinity,
+      child: Wrap(
+        alignment: WrapAlignment.spaceBetween,
+        spacing: 20,
+        runSpacing: 20,
+        children: [
+          InkWell(
+            onTap: () {
+              log("Call button tapped");
+            },
+            child: Container(
+              width: 90,
+              height: 40,
+              padding: EdgeInsets.symmetric(vertical: 6),
+              alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: Color(0xFFF4EBF8),
-                borderRadius: BorderRadius.circular(6),
+                color: AaspasColorBox.buttonBg,
+                borderRadius: BorderRadius.circular(60),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
                 spacing: 6,
                 children: [
-                  SvgPicture.asset("assets/icons/aaspas_share.svg"),
+                  SvgPicture.asset(
+                    "assets/icons/aaspas_phone-flip.svg",
+                    width: 15,
+                    height: 15,
+                  ),
                   Text(
-                    "Share",
+                    "Call",
                     style: GoogleFonts.roboto(
-                      textStyle: Theme.of(context).textTheme.labelLarge
-                          ?.copyWith(color: Color(0xFF732FCB)),
+                      textStyle: Theme.of(context).textTheme.titleSmall,
                     ),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
-      ],
+          ),
+          InkWell(
+            onTap: () {
+              log("WhatsApp button tapped");
+            },
+            child: Container(
+              width: 130,
+              height: 40,
+              padding: EdgeInsets.symmetric(vertical: 6),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: Color(0xFF0B8F00),
+                borderRadius: BorderRadius.circular(60),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+
+                spacing: 6,
+                children: [
+                  SvgPicture.asset(
+                    "assets/icons/aaspas_logo-whatsapp-in-property-list-card.svg",
+                    width: 18,
+                    height: 18,
+                  ),
+                  Text(
+                    "WhatsApp",
+                    style: GoogleFonts.roboto(
+                      textStyle: Theme.of(
+                        context,
+                      ).textTheme.titleSmall?.copyWith(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

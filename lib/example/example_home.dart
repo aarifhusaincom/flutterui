@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'aaspas_example_pages/aaspas.dart';
+import 'moyo_example_pages/moyo.dart';
+
+export 'aaspas_example_pages/aaspas.dart';
+export 'moyo_example_pages/moyo.dart';
 
 class ExampleHome extends StatelessWidget {
   const ExampleHome({super.key});
@@ -11,18 +15,33 @@ class ExampleHome extends StatelessWidget {
       appBar: AppBar(title: Text("All Projects"), centerTitle: true),
       body: ListView(
         children: [
-          ListTile(
-            leading: Icon(Icons.work_outline),
-            title: Text("Aaspas Project"),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Aaspas()),
-              );
-            },
+          listTile(
+            context: context,
+            title: "Aaspas Project",
+            routeTo: Aaspas(),
           ),
+          listTile(context: context, title: "Moyo Project", routeTo: Moyo()),
         ],
       ),
+    );
+  }
+
+  /// build tile for listview
+
+  Widget listTile({
+    required BuildContext context,
+    required String title,
+    required Widget routeTo,
+  }) {
+    return ListTile(
+      leading: Icon(Icons.work_outline),
+      title: Text(title),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => routeTo),
+        );
+      },
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterui/example/example_home.dart';
+
+import 'example/example_home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,6 +18,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
+      // home: AaspasDetailsWidgetsExample(),
+      // home: MoyoListCardsExample(),
       home: ExampleHome(),
     );
   }
